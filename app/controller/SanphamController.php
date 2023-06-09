@@ -17,7 +17,8 @@ class SanphamController extends Controller
 		
         $this->view("SanphamView", array(
             "title"=>"Sản Phẩm",
-			"nop"=>$temp['nop'],
+			"nop"=> $temp['nop'],
+			"page"=> $page,
             "sp" => $list
         ));
     }

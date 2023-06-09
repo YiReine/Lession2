@@ -62,7 +62,7 @@
 						 src="<?php echo BASEURL; ?>/public/img/<?php echo $row['anh'] ?>"></td>
 
 				<td class="text-center">
-				<a class="btn btn-primary btn-sm" href="<?php echo BASEURL; ?>/formcontroller/show/
+				<a class="btn btn-success btn-sm" href="<?php echo BASEURL; ?>/formcontroller/show/
 														<?php echo $row['ma'] ?>">
 				  Xem </a>
 				  <a class="btn btn-primary btn-sm" href="<?php echo BASEURL; ?>/formcontroller/edit/
@@ -83,12 +83,26 @@
 		?>
 		</tbody>
 	</table>
-	<?php 
-	for($page = 1; $page<= $data['nop']; $page++) {
-		echo '<a href = "'.BASEURL.'?page=' . $page . '">' . $page . '</a>';
+	<nav aria-label="...">
+	  <ul class="pagination">
+		<li class="page-item <?php if($data['page']==1) echo 'disabled'?>">
+		  <a class="page-link" href="<?php echo BASEURL.'?page=' . ($data['page']-1) ?>" >Previous</a>
+		</li>
+		<?php 
+			for($page = 1; $page<= $data['nop']; $page++) {
+				echo '<li class="page-item';
+				
+				if ($page == $data['page']) echo ' active';
+				echo '"> <a class="page-link" href = "'.BASEURL.'?page=' . $page . '">' . $page . '</a></li>';
+			}
 
-	}
-
-	?>
+		?>
+		
+		<li class="page-item <?php if($data['page']==$data['nop']) echo 'disabled'?>">
+		  <a class="page-link" href="<?php echo BASEURL.'?page=' . ($data['page']+1) ?>">Next</a>
+		</li>
+	  </ul>
+	</nav>
+	
 </body>
 </html>
