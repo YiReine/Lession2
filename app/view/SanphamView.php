@@ -2,16 +2,36 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title><?php echo $data['title'] ?></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!-- Font Awesome -->
+	<link
+	  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+	  rel="stylesheet"
+	/>
+	<!-- Google Fonts -->
+	<link
+	  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+	  rel="stylesheet"
+	/>
+	<!-- MDB -->
+	<link
+	  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css"
+	  rel="stylesheet"
+	/>
 </head>
 
 <body>
-	<div class="search-area">
-		<form action="<?php echo BASEURL; ?>/sanphamcontroller/search" method="post">                    
-		 <input type = "text" name = "search" placeholder = "Nhập từ khóa cần tìm" value =
+	<img style="width: 100px" alt="logo"
+						 src="<?php echo BASEURL; ?>/public/img/logo.png ?>">
+	<div >
+		<form class="input-group" action="<?php echo BASEURL; ?>/sanphamcontroller/search" method="post">                    
+		 <input type = "text" class="form-control rounded" name = "search" 
+				placeholder = "Nhập từ khóa cần tìm" value =
 		 "<?php if(isset($_POST["search"])) { echo $_POST["search"]; } ?>" >
-		 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-		 </form>
+		 <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+		</form>
 
 	</div>
 	
@@ -20,7 +40,7 @@
 	<table id="example1" class="table table-bordered table-striped">
 		<thead>
 			<tr id="tbheader">
-				<th><input type="checkbox" id="check-all-gd"></th>
+				
 				<th>Mã sản phẩm</th>
 				<th>Tên sản phẩm</th>
 				<th>Danh mục</th>
@@ -34,7 +54,6 @@
 				while($row = $list->fetch_assoc()){
 		?>
 			<tr>
-				<td><input type="checkbox" class="cbsp" value="<?php echo $row['ma'] ?>"></td>
 
 				<td><?php echo $row['ma'] ?></td>
 				<td><?php echo $row['ten'] ?></td>
